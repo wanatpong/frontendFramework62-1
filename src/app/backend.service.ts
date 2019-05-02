@@ -99,4 +99,16 @@ export class BackendService {
       return false;
     }
   }
+
+  countAllUser() {
+    return this.http
+      .get<any>(authServiceUrl + "user/list-count", httpOptions)
+      .pipe();
+  }
+
+  getListUser(pageNumber: number) {
+    return this.http
+      .get<any>(authServiceUrl + "user/list/" + pageNumber, httpOptions)
+      .pipe();
+  }
 }

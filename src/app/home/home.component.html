@@ -3,48 +3,11 @@
   <!-- Sidebar -->
   <nav id="sidebar">
     <div class="sidebar-header">
-      <h3>Bootstrap Sidebar</h3>
+      <h3>HOME</h3>
     </div>
 
     <ul class="list-unstyled components">
-      <p>Dummy Heading</p>
-      <li class="active">
-        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-        <ul class="collapse list-unstyled" id="homeSubmenu">
-          <li>
-            <a href="#">Home 1</a>
-          </li>
-          <li>
-            <a href="#">Home 2</a>
-          </li>
-          <li>
-            <a href="#">Home 3</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">About</a>
-      </li>
-      <li>
-        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-        <ul class="collapse list-unstyled" id="pageSubmenu">
-          <li>
-            <a href="#">Page 1</a>
-          </li>
-          <li>
-            <a href="#">Page 2</a>
-          </li>
-          <li>
-            <a href="#">Page 3</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Portfolio</a>
-      </li>
-      <li>
-        <a href="#">Contact</a>
-      </li>
+      <li> <a [routerLink]="['/home']">รายชื่อผู้ใช้งาน</a> </li>
     </ul>
   </nav>
 
@@ -53,46 +16,38 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
 
-        <button type="button" id="sidebarCollapse" class="btn btn-info">
-          <i class="fas fa-align-left"></i>
-          <span>Toggle Sidebar</span>
-        </button>
+        <button type="button" id="sidebarCollapse" class="btn btn-info"> <i class="fas fa-align-left"></i> <span
+            class="ml-2">Toggle Sidebar</span> </button>
 
       </div>
     </nav>
-    <h2>Collapsible Sidebar Using Bootstrap 4</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-    <div class="line"></div>
-
-    <h2>Lorem Ipsum Dolor</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-    <div class="line"></div>
-
-    <h2>Lorem Ipsum Dolor</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-    <div class="line"></div>
-
-    <h3>Lorem Ipsum Dolor</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h2 class="mt-2">รายชื่อผู้ใช้งาน</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th class="text-center">ลำดับ</th>
+          <th class="text-center">ชื่อ - นามสกุล</th>
+          <th class="text-center">เลขประจำตัวทหาร</th>
+          <th class="text-center">สังกัด</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index">
+          <td class="text-center">{{i + ((currentPage-1)*limit) + 1 }}</td>
+          <td class="text-center">{{user.first_name}} {{user.last_name}}</td>
+          <td class="text-center">{{user.id_mil}}</td>
+          <td class="text-center">{{user.unit_name}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#" (click)="prevPage($event)">Previous</a></li>
+        <li class="page-item" [class.active]="currentPage==i+1"
+          *ngFor="let page-number of totalInPagination; let i = index"><a class="page-link" href="#"
+            (click)="gotoPage($event,i+1)">{{i+1}}</a></li>
+        <li class="page-item"><a class="page-link" href="#" (click)="nextPage($event)">Next</a></li>
+      </ul>
+    </nav>
+    <pre>Current page: {{currentPage}} </pre>
   </div>
-
-</div>
