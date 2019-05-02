@@ -35,7 +35,7 @@
       <tbody>
         <tr *ngFor="let user of users; let i = index">
           <td class="text-center">{{i + ((currentPage-1)*limit) + 1 }}</td>
-          <td class="text-center">{{user.first_name}} {{user.last_name}}</td>
+          <td class="text-center">{{user.rank}} {{user.first_name}} {{user.last_name}}</td>
           <td class="text-center">{{user.id_mil}}</td>
           <td class="text-center">{{user.unit_name}}</td>
         </tr>
