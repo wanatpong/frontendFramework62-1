@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-center h-100">
       <div class="card">
         <div class="card-header">
-          <h3>Register</h3>
+          <h3>ระบบลงทะเบียน</h3>
           <div class="d-flex justify-content-end social_icon">
             <span><i class="fab fa-facebook-square"></i></span>
             <span><i class="fab fa-google-plus-square"></i></span>
@@ -12,13 +12,13 @@
         </div>
         <div class="card-body">
           <div class="logo-container">
-            <img src="../../assets/logo_div.png" />
+            <img src="../../assets/ndsi_logo.png" />
           </div>
           <form [formGroup]="registerForm">
             <div class="input-group form-group">
               <!-- เริ่มมกล่อง input -->
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-angle-double-down"></i></span>
+                <span class="input-group-text"><i class="fas fa-award"></i></span>
               </div>
               <input formControlName="rank" type="text" class="form-control" placeholder="ยศ" />
             </div><!-- จบกล่อง input -->
@@ -36,14 +36,14 @@
             </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
               </div>
 
               <input formControlName="id_mil" type="text" class="form-control" placeholder="เลขประจำตัวทหาร" />
             </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <span class="input-group-text"><i class="fab fa-black-tie"></i></span>
               </div>
               <input formControlName="unit_name" type="text" class="form-control" placeholder="สังกัด" />
             </div>
@@ -62,7 +62,14 @@
             </div>
 
             <div class="form-group text-center mt-2">
-              <input (click)="onSubmit()" value="Register" class="btn login_btn" />
+              <button *ngIf="!submitting" (click)="onSubmit()" class="btn login_btn">Register</button>
+              <div *ngIf="submitting" class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <!--<input (click)="onSubmit()" value="Register" class="btn login_btn" />-->
             </div>
           </form>
         </div>
@@ -71,7 +78,7 @@
             Have an account?<a [routerLink]="['/login']">Login</a>
           </div>
           <div class="d-flex justify-content-center">
-            <a href="#">Create by Weerayut</a>
+            <a href="#">Create by Wanatpong Dokput</a>
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
           <div class="logo-container">
-            <img src="../../assets/logo_div.png" />
+            <img src="../../assets/ndsi_logo.png" />
           </div>
           <form [formGroup]="loginForm">
             <div class="input-group form-group">
@@ -31,7 +31,9 @@
               <input type="checkbox" />Remember Me
             </div>
             <div class="form-group text-center mt-2">
-              <input (click)="onSubmit()" value="Login" class="btn login_btn" />
+              <button *ngIf="!submitting" (click)="onSubmit()" class="btn login_btn">Login</button>
+              <div *ngIf="submitting" class="lds-hourglass"></div>
+              <!--<input (click)="onSubmit()" value="Login" class="btn login_btn" />-->
             </div>
           </form>
         </div>
@@ -40,7 +42,7 @@
             Don't have an account?<a [routerLink]="['/register']">Register</a>
           </div>
           <div class="d-flex justify-content-center">
-            <a href="#">Create by Weerayut</a>
+            <a href="#">Create by Wanatpong Dokput</a>
           </div>
         </div>
       </div>
