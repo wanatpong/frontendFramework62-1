@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap } from "rxjs/operators";
 import { JwtHelperService } from "@auth0/angular-jwt";
 
-const authServiceUrl = "https://backend-framework62-wanatpong.herokuapp.com/";
+const authServiceUrl = "https://framewoke-backend-62-bas.herokuapp.com/";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -74,23 +74,19 @@ export class BackendService {
       })
     };
   }
-
   logout() {
     localStorage.removeItem("id_token");
   }
-
   verifyToken() {
     const token = localStorage.getItem("id_token");
     return this.http
       .post<any>(authServiceUrl + "login/verifyToken", { token }, httpOptions)
       .pipe();
   }
-
   public isLoggedIn(): Boolean {
     const token = localStorage.getItem("id_token");
     return !helper.isTokenExpired(token);
   }
-
   public decodeToken() {
     const token = localStorage.getItem("id_token");
     if (this.isLoggedIn()) {
@@ -105,7 +101,6 @@ export class BackendService {
       .get<any>(authServiceUrl + "user/list-count", httpOptions)
       .pipe();
   }
-
   getListUser(pageNumber: number) {
     return this.http
       .get<any>(authServiceUrl + "user/list/" + pageNumber, httpOptions)
